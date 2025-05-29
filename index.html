@@ -3,110 +3,561 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Satish Babu | Software Developer</title>
+  <title>Satish Babu Thota | Senior C++ Engineer & Technical Architect</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
+    :root {
+      --primary: #4361ee;
+      --primary-dark: #3a0ca3;
+      --secondary: #1a1a2e;
+      --accent: #FFD700; /* Changed from pink to light yellow */
+      --text: #2b2d42;
+      --text-light: #8d99ae;
+      --background: #f8f9fa;
+      --white: #ffffff;
+      --card-bg: #ffffff;
+      --border: #e9ecef;
+      --shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    }
+
+    .dark-mode {
+      --primary: #4cc9f0;
+      --primary-dark: #4895ef;
+      --secondary: #121212;
+      --accent: #FFD700; /* Light yellow remains in dark mode */
+      --text: #e9ecef;
+      --text-light: #adb5bd;
+      --background: #0a0a0a;
+      --card-bg: #1a1a1a;
+      --border: #2b2b2b;
+      --shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    }
+    
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+    
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      background-color: #f0f2f5;
-      color: #333;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      line-height: 1.7;
+      background-color: var(--background);
+      color: var(--text);
+      transition: var(--transition);
     }
-    header {
-      background: #1f2937;
-      color: #ecf5e4;
-      padding: 2rem 1rem;
+    
+    .header-wrapper {
+      position: relative;
+      overflow: hidden;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--secondary), #000000);
+      color: var(--white);
       text-align: center;
+      padding: 0 2rem;
+      margin-bottom: 3rem;
     }
+
+    .header-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      animation: fadeInUp 1s ease-out;
+    }
+    
     header h1 {
-      margin-bottom: 0.5rem;
+      margin-bottom: 1rem;
       font-size: 2.5rem;
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+      letter-spacing: -0.5px;
+      line-height: 1.1;
     }
+    
     header p {
       font-size: 1.2rem;
-      color: #d1d5db;
+      color: rgba(255, 255, 255, 0.85);
+      max-width: 700px;
+      margin: 0 auto;
     }
+
+    .header-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.15;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="%234361ee"><circle cx="25" cy="25" r="1"/><circle cx="75" cy="75" r="1"/><circle cx="75" cy="25" r="1"/><circle cx="25" cy="75" r="1"/></svg>');
+      animation: bgMove 100s linear infinite;
+    }
+
     .container {
-      max-width: 1000px;
-      margin: 2rem auto;
-      padding: 1rem;
-      background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem 4rem;
     }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border: 1px solid var(--border);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h3 {
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      font-size: 1.5rem;
+      font-weight: 600;
+      position: relative;
+      display: inline-block;
+    }
+
+    .card h3::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--accent);
+      border-radius: 3px;
+    }
+
     section {
-      margin-bottom: 2rem;
+      margin-bottom: 5rem;
     }
+    
     h2 {
-      color: #2563eb;
-      margin-bottom: 1rem;
-      border-bottom: 2px solid #e5e7eb;
-      padding-bottom: 0.5rem;
+      color: var(--primary);
+      margin-bottom: 2.5rem;
+      font-weight: 600;
+      font-size: 2rem;
+      font-family: 'Playfair Display', serif;
+      position: relative;
+      display: inline-block;
     }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 4px;
+    }
+    
     ul {
-      list-style: disc inside;
-      margin-left: 1rem;
+      list-style: none;
     }
+    
+    li {
+      margin-bottom: 0.75rem;
+      position: relative;
+      padding-left: 2rem;
+      color: var(--text-light);
+    }
+    
+    li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+    
+    p {
+      margin-bottom: 1.5rem;
+      color: var(--text);
+      line-height: 1.8;
+    }
+    
     a {
-      color: #2563eb;
+      color: var(--primary);
       text-decoration: none;
+      transition: var(--transition);
+      font-weight: 500;
     }
+    
     a:hover {
-      text-decoration: underline;
+      color: var(--accent);
     }
+
+    .profile-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .expertise-list {
+      columns: 2;
+      column-gap: 2rem;
+    }
+
+    @media (max-width: 992px) {
+      .expertise-list {
+        columns: 1;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .profile-section {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+    
+    .contact-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      padding: 2rem;
+      background: var(--card-bg);
+      border-radius: 12px;
+      transition: var(--transition);
+      border: 1px solid var(--border);
+      width: 150px;
+      text-align: center;
+    }
+
+    .contact-item:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .contact-icon {
+      font-size: 2rem;
+      color: var(--primary);
+      transition: var(--transition);
+    }
+
+    .contact-item:hover .contact-icon {
+      color: var(--accent);
+      transform: scale(1.2);
+    }
+
+    .contact-label {
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    .mode-toggle {
+      position: fixed;
+      top: 2rem;
+      right: 2rem;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--card-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      z-index: 100;
+      border: 1px solid var(--border);
+      transition: var(--transition);
+    }
+
+    .mode-toggle:hover {
+      transform: scale(1.1);
+    }
+
     footer {
       text-align: center;
-      padding: 1rem;
+      padding: 2rem 1rem;
       font-size: 0.9rem;
-      color: #6b7280;
+      background: var(--secondary);
+      color: rgba(255, 255, 255, 0.7);
+      position: relative;
+    }
+
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes bgMove {
+      from {
+        background-position: 0 0;
+      }
+      to {
+        background-position: 1000px 1000px;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+      
+      header p {
+        font-size: 1.1rem;
+      }
+
+      h2 {
+        font-size: 1.8rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-wrapper {
+        height: 250px;
+        padding: 0 1rem;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+      
+      header p {
+        font-size: 1rem;
+      }
+
+      .container {
+        padding: 0 1.5rem 2rem;
+      }
+
+      .card {
+        padding: 1.5rem;
+      }
+
+      h2 {
+        font-size: 1.6rem;
+      }
+
+      .contact-item {
+        width: 120px;
+        padding: 1.5rem;
+      }
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Satish Babu Thota</h1>
-    <p>Software Developer | C++ Specialist </p>
-  </header>
+  <div class="mode-toggle" id="modeToggle">
+    <i class="fas fa-moon"></i>
+  </div>
+
+  <div class="header-wrapper">
+    <div class="header-bg"></div>
+    <div class="header-content">
+      <h1>Satish Babu Thota</h1>
+      <p>Senior C++ Engineer & Technical Architect</p>
+    </div>
+  </div>
 
   <div class="container">
     <section>
-      <h2>About Me</h2>
-      <p>I am a passionate software developer with 12+ years of experience in C++,VC++, MFC, and SQL development. My expertise spans high-performance systems, archiving, Health, Telecom, financial domain applications, and mentoring technical teams.</p>
+      <h2>Professional Profile</h2>
+      <div class="profile-section">
+        <div class="card">
+          <h3>Expertise</h3>
+          <p>Seasoned C++ specialist with 12+ years experience in system-level programming, performance optimization, and complex problem-solving across financial, telecom, and healthcare domains.</p>
+          <ul class="expertise-list">
+            <li><strong>Programming Languages:</strong> Expert in C++ (Windows Platform), STL, MFC, VC++, Win32, skilled in Python</li>
+            <li><strong>Operating Systems:</strong> Deep understanding of Windows</li>
+            <li><strong>Software Development:</strong> Proficient in requirement analysis, software design, code implementation, unit testing, and technical documentation</li>
+            <li><strong>Scripting & Automation:</strong> Experienced in creating custom Bash scripts for Linux/Unix environments</li>
+            <li><strong>Frameworks & Middleware:</strong> Hands-on with COM, ATL, and various middleware technologies</li>
+            <li><strong>Networking & Protocols:</strong> Solid grasp of TCP/IP, XML, HTTP protocols</li>
+            <li><strong>Development Tools:</strong> Proficient in Git, Jenkins, SVN, Perforce, Bugzilla, WinDbg, Wireshark, ProcMon, Fiddler</li>
+            <li><strong>Methodologies:</strong> Agile (Scrum, Kanban), Iterative and Waterfall models; Jira, Confluence, Microsoft Project</li>
+            <li><strong>Identity Management:</strong> OpenID implementation with Azure, Okta, Ping Identity, Keycloak</li>
+            <li><strong>Testing:</strong> Unit tests with CppUnit, UnitTest++ (90%+ code coverage)</li>
+            <li><strong>Design:</strong> UML diagrams and OO design principles</li>
+            <li><strong>Leadership:</strong> Certified SAFe Agile Scrum Master with excellent communication skills</li>
+            <li><strong>Customer Support:</strong> 24/7 on-call production support for airline clients</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Approach</h3>
+          <p>Methodical engineer who combines technical depth with strategic thinking. Passionate about mentoring teams and establishing engineering best practices.</p>
+          <ul>
+            <li>Focus on clean, maintainable code architecture</li>
+            <li>Bridge between legacy systems and modern cloud</li>
+            <li>Strong advocate for documentation and knowledge sharing</li>
+            <li>Continuous learner with focus on emerging technologies</li>
+            <li>Proven ability to troubleshoot complex system issues</li>
+            <li>Commitment to delivering robust, high-performance solutions</li>
+            <li>Emphasis on security and reliability in all implementations</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <section>
-      <h2>Skills</h2>
-      <ul>
-        <li>C++,VC++, STL, MFC, Win32 API</li>
-        <li>SQL, Windbg, Wireshark</li>
-        <li>Azure (learning), CI/CD, Jenkins, Git</li>
-        <li>Debugging, Crash Dump Analysis, Symbol Servers</li>
-      </ul>
+      <h2>Technical Mastery</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3><i class="fas fa-microchip"></i> Core Technologies</h3>
+          <ul>
+            <li>C++17/20, VC++, MFC, Win32 API, COM, ATL</li>
+            <li>Boost, STL, Template Metaprogramming</li>
+            <li>Multi-threading, Synchronization</li>
+            <li>Memory Management, Performance Tuning</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><i class="fas fa-tools"></i> Development Ecosystem</h3>
+          <ul>
+            <li>Visual Studio, Windbg, Wireshark</li>
+            <li>Jenkins, Git, CI/CD Pipelines</li>
+            <li>SQL Server, Oracle, Query Optimization</li>
+            <li>Crash Dump Analysis, Symbol Servers</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><i class="fas fa-cloud"></i> Emerging Skills</h3>
+          <ul>
+            <li>Azure Cloud Services & Architecture</li>
+            <li>Microservices, Docker, Kubernetes</li>
+            <li>Modern C++ Features & Patterns</li>
+            <li>Cross-platform Development</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <section>
-      <h2>Goals</h2>
-      <ul>
-        <li>Master Azure DevOps and cloud-native development</li>
-        <li>Transition into a solution architect role</li>
-        <li>Mentor aspiring developers through content and coaching</li>
-      </ul>
+      <h2>Professional Vision</h2>
+      <div class="card-grid">
+        <div class="card">
+          <h3><i class="fas fa-rocket"></i> Technical Goals</h3>
+          <ul>
+            <li>Master cloud-native C++ development patterns</li>
+            <li>Develop expertise in distributed systems architecture</li>
+            <li>Create reusable frameworks for high-performance computing</li>
+            <li>Pioneer C++ best practices for modern development teams</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3><i class="fas fa-chalkboard-teacher"></i> Leadership Goals</h3>
+          <ul>
+            <li>Mentor the next generation of C++ engineers</li>
+            <li>Establish technical excellence standards</li>
+            <li>Bridge business objectives with technical strategy</li>
+            <li>Contribute to open-source C++ projects</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <section>
-      <h2>Contact</h2>
-      <p>Email: <a href="mailto:thotasatishbabu@gmail.com">thotasatishbabu@gmail.com</a></p>
-      <p>LinkedIn: <a href="https://linkedin.com/in/thotasatishbabu">linkedin.com/in/thotasatishbabu</a></p>
-      <p>GitHub: <a href="https://github.com/thotasatishbabu">github.com/thotasatishbabu</a></p>
+      <h2>Connect With Me</h2>
+      <div class="contact-info">
+        <a href="mailto:thotasatishbabu@gmail.com" class="contact-item">
+          <i class="fas fa-envelope contact-icon"></i>
+          <span class="contact-label">Email</span>
+        </a>
+        <a href="https://linkedin.com/in/thotasatishbabu" class="contact-item" target="_blank">
+          <i class="fab fa-linkedin-in contact-icon"></i>
+          <span class="contact-label">LinkedIn</span>
+        </a>
+        <a href="https://github.com/thotasatishbabu" class="contact-item" target="_blank">
+          <i class="fab fa-github contact-icon"></i>
+          <span class="contact-label">GitHub</span>
+        </a>
+      </div>
     </section>
   </div>
 
   <footer>
-    &copy; 2025 Satish Babu. All rights reserved.
+    <p>&copy; 2025 Satish Babu Thota. All rights reserved.</p>
   </footer>
+
+  <script>
+    // Dark mode toggle
+    const modeToggle = document.getElementById('modeToggle');
+    const icon = modeToggle.querySelector('i');
+    
+    modeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      
+      if (document.body.classList.contains('dark-mode')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+      } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+      }
+    });
+
+    // Scroll animations
+    const observerOptions = {
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.card, section h2').forEach(el => {
+      el.style.opacity = 0;
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+      observer.observe(el);
+    });
+
+    // Fix email link
+    document.querySelector('a[href^="mailto"]').addEventListener('click', function(e) {
+      e.preventDefault();
+      window.location.href = 'mailto:thotasatishbabu@gmail.com';
+    });
+  </script>
 </body>
 </html>
