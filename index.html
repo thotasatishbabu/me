@@ -10,31 +10,17 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --primary: #4361ee;
-      --primary-dark: #3a0ca3;
-      --secondary: #1a1a2e;
-      --accent: #FFD700; /* Changed from pink to light yellow */
-      --text: #2b2d42;
-      --text-light: #8d99ae;
-      --background: #f8f9fa;
-      --white: #ffffff;
-      --card-bg: #ffffff;
-      --border: #e9ecef;
-      --shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-    }
-
-    .dark-mode {
       --primary: #4cc9f0;
       --primary-dark: #4895ef;
       --secondary: #121212;
-      --accent: #FFD700; /* Light yellow remains in dark mode */
+      --accent: #FFD700;
       --text: #e9ecef;
       --text-light: #adb5bd;
       --background: #0a0a0a;
       --card-bg: #1a1a1a;
       --border: #2b2b2b;
       --shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
     }
     
     * {
@@ -59,7 +45,7 @@
       align-items: center;
       justify-content: center;
       background: linear-gradient(135deg, var(--secondary), #000000);
-      color: var(--white);
+      color: var(--text);
       text-align: center;
       padding: 0 2rem;
       margin-bottom: 3rem;
@@ -95,7 +81,7 @@
       width: 100%;
       height: 100%;
       opacity: 0.15;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="%234361ee"><circle cx="25" cy="25" r="1"/><circle cx="75" cy="75" r="1"/><circle cx="75" cy="25" r="1"/><circle cx="25" cy="75" r="1"/></svg>');
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="%234cc9f0"><circle cx="25" cy="25" r="1"/><circle cx="75" cy="75" r="1"/><circle cx="75" cy="25" r="1"/><circle cx="25" cy="75" r="1"/></svg>');
       animation: bgMove 100s linear infinite;
     }
 
@@ -123,7 +109,7 @@
 
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
     }
 
     .card h3 {
@@ -254,7 +240,7 @@
 
     .contact-item:hover {
       transform: translateY(-5px) scale(1.05);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     }
 
     .contact-icon {
@@ -271,28 +257,6 @@
     .contact-label {
       font-size: 0.9rem;
       color: var(--text-light);
-    }
-
-    .mode-toggle {
-      position: fixed;
-      top: 2rem;
-      right: 2rem;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: var(--card-bg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      box-shadow: var(--shadow);
-      z-index: 100;
-      border: 1px solid var(--border);
-      transition: var(--transition);
-    }
-
-    .mode-toggle:hover {
-      transform: scale(1.1);
     }
 
     footer {
@@ -384,10 +348,6 @@
   </style>
 </head>
 <body>
-  <div class="mode-toggle" id="modeToggle">
-    <i class="fas fa-moon"></i>
-  </div>
-
   <div class="header-wrapper">
     <div class="header-bg"></div>
     <div class="header-content">
@@ -516,22 +476,6 @@
   </footer>
 
   <script>
-    // Dark mode toggle
-    const modeToggle = document.getElementById('modeToggle');
-    const icon = modeToggle.querySelector('i');
-    
-    modeToggle.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      
-      if (document.body.classList.contains('dark-mode')) {
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-      } else {
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-      }
-    });
-
     // Scroll animations
     const observerOptions = {
       threshold: 0.1
