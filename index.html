@@ -278,6 +278,13 @@
       background: linear-gradient(90deg, var(--primary), var(--accent));
     }
 
+    .view-counter {
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: var(--primary);
+      opacity: 0.8;
+    }
+
     /* Animations */
     @keyframes fadeInUp {
       from {
@@ -473,6 +480,7 @@
 
   <footer>
     <p>&copy; 2025 Satish Babu Thota. All rights reserved.</p>
+    <div class="view-counter" id="viewCounter">Loading view count...</div>
   </footer>
 
   <script>
@@ -501,6 +509,32 @@
     document.querySelector('a[href^="mailto"]').addEventListener('click', function(e) {
       e.preventDefault();
       window.location.href = 'mailto:thotasatishbabu@gmail.com';
+    });
+
+    // Page view counter functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check if localStorage is available
+      if (typeof(Storage) !== "undefined") {
+        // Get or initialize the view count
+        let viewCount = localStorage.getItem('pageViewCount');
+        
+        if (viewCount) {
+          viewCount = parseInt(viewCount) + 1;
+        } else {
+          viewCount = 1;
+        }
+        
+        // Update the view count in localStorage
+        localStorage.setItem('pageViewCount', viewCount);
+        
+        // Display the view count with nice formatting
+        const counterElement = document.getElementById('viewCounter');
+        counterElement.textContent = `This page has been viewed ${viewCount} time${viewCount !== 1 ? 's' : ''}`;
+        counterElement.style.opacity = 1;
+      } else {
+        // localStorage not supported
+        document.getElementById('viewCounter').textContent = 'View counter not available';
+      }
     });
   </script>
 </body>
